@@ -9,7 +9,7 @@ function FindProxyForURL(url, host) {
     }
 
     // Proxy for specific domains
-    if (shExpMatch(host, "*.facebook.com") ||
+    if (shExpMatch(host, "*.zalo.me") ||
         shExpMatch(host, "*.youtube.com")) {
         return "PROXY 172.30.117.4:3128";
     }
