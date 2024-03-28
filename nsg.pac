@@ -25,9 +25,6 @@ function isKeywordMatch(str, keyword) {
         // Nếu yêu cầu sử dụng phương thức POST, chuyển hướng qua proxy
         return "PROXY 172.30.117.4:3128";
     }
-
-    // Mặc định không sử dụng proxy
-    return "DIRECT";
 }
 
 // Hàm kiểm tra nếu yêu cầu sử dụng phương thức POST
