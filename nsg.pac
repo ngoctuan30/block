@@ -41,7 +41,8 @@ function isPostRequest(url) {
     }
 
     // Proxy for specific protocols
-    if (url.substring(0, 5) == "http:" ||
+    if (url.substring(0, 6) == "http:" ||
+        url.substring(0, 5) == "https:" ||
         url.substring(0, 4) == "ftp:") {
         return "PROXY 172.30.117.4:3128";
     }
