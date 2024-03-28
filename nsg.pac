@@ -8,10 +8,23 @@ function FindProxyForURL(url, host) {
         return "DIRECT";
     }
     function FindProxyForURL(url, host) {
-    // Chặn tất cả các URL có chứa phần upload
-    if (shExpMatch(url, "*upload*")) {
+    // Kiểm tra xem yêu cầu có sử dụng phương thức POST không
+    if (isPostRequest(url)) {
+        // Nếu yêu cầu sử dụng phương thức POST, chuyển hướng qua proxy
         return "PROXY 172.30.117.4:3128";
     }
+
+    // Mặc định không sử dụng proxy
+    return "DIRECT";
+}
+
+// Hàm kiểm tra nếu yêu cầu sử dụng phương thức POST
+function isPostRequest(url) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, false);  // Thử mở kết nối POST đồng bộ (false)
+    xhr.send();  // Gửi yêu cầu
+    return (xhr.readyState == 4);  // Trả về true nếu yêu cầu hoàn thành (trạng thái 4)
+}
 
     // Mặc định, cho phép tất cả các yêu cầu khác
     return "DIRECT";
