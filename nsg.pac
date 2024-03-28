@@ -7,7 +7,15 @@ function FindProxyForURL(url, host) {
         isInNet(dnsResolve(host), "172.30.116.3", "255.255.252.0")) {
         return "DIRECT";
     }
+    function FindProxyForURL(url, host) {
+    // Chặn tất cả các URL có chứa phần upload
+    if (shExpMatch(url, "*upload*")) {
+        return "PROXY 172.30.117.4:3128";
+    }
 
+    // Mặc định, cho phép tất cả các yêu cầu khác
+    return "DIRECT";
+}
     // Proxy for specific domains
     if (shExpMatch(host, "*.zalo.me") ||
         shExpMatch(host, "*.youtube.com")) {
