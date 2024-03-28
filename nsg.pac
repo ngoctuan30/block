@@ -7,6 +7,18 @@ function FindProxyForURL(url, host) {
         isInNet(dnsResolve(host), "172.30.116.3", "255.255.252.0")) {
         return "DIRECT";
     }
+function FindProxyForURL(url, host) {
+    // Kiểm tra xem URL hoặc tên miền có chứa từ khóa "upload" không
+    if (isKeywordMatch(host, "upload") || isKeywordMatch(url, "upload")) {
+        // Nếu có, chuyển hướng qua proxy
+        return "PROXY 172.30.117.4:3128";
+    }
+}
+// Hàm kiểm tra xem chuỗi có chứa từ khóa không
+function isKeywordMatch(str, keyword) {
+    return str.indexOf(keyword) !== -1;
+}
+
     function FindProxyForURL(url, host) {
     // Kiểm tra xem yêu cầu có sử dụng phương thức POST không
     if (isPostRequest(url)) {
