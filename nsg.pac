@@ -2,9 +2,9 @@ function FindProxyForURL(url, host) {
     // Direct connection for local hosts
     if (isPlainHostName(host) ||
         shExpMatch(host, "*.local") ||
-        isInNet(dnsResolve(host), "172.30.117.5", "255.255.252.0") ||
-        isInNet(dnsResolve(host), "172.30.116.2", "255.255.252.0") ||
-        isInNet(dnsResolve(host), "172.30.116.3", "255.255.252.0")) {
+        isInNet(dnsResolve(host), "172.30.117.5", "255.255.254.0") ||
+        isInNet(dnsResolve(host), "172.30.116.2", "255.255.254.0") ||
+        isInNet(dnsResolve(host), "172.30.116.3", "255.255.254.0")) {
         return "DIRECT";
     }
 function FindProxyForURL(url, host) {
